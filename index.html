@@ -28,19 +28,19 @@
 
     <section id="tela-produtos" style="display: none;">
         <h2>Tela Produtos</h2>
-        <p>Aqui entrará a lista vinda da API (aula 4).</p>
+
     </section>
 
     <section id="tela-admin" style="display: none;">
         <h2>Área Admin</h2>
-        
+
         <form id="form-produto">
             <input type="text" id="nome-produto" placeholder="Nome do produto">
             <input type="number" id="preco-produto" placeholder="Preço" step="0.01">
             <button type="submit">Cadastrar</button>
         </form>
         <p id="mensagem-produto"></p>
-    </section>
+    </section>  
 
     <section id="tela-perfil" style="display: none;">
         <h2>Perfil </h2>
@@ -120,6 +120,29 @@
                  document.getElementById('mensagem-produto').textContent= 'Produto cadastrado'
                 })
         })
+ //--------------------------21/8----------------------------------------------------------------------
+let produtos = [
+  { nome: 'Camiseta', preco: 49.90 },
+  { nome: 'Caneca', preco: 24.90 },
+  { nome: 'Boné', preco: 39.90 }
+]
+
+function cardProdutos(produto) {
+    return`
+    <div class= "card-produto">
+    <h3>${produto.nome}</h3>
+        <p>R$ ${produto.preco.toFixed(2)} </p>
+    </div>
+`;
+}
+    function renderProdutos() {
+        const container = document.getElementById('tela-produtos');
+        const cards = produtos.map(cardProdutos).join('');
+        container.innerHTML = `<h2>Tela de Produtos</h2>` + cards ;
+    }
+    renderProdutos();
+
+
     </script>
 
 </body>
